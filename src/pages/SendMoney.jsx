@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import axios from "axios";
-import { AmpContext } from "next/dist/server/future/route-modules/app-page/vendored/contexts/entrypoints";
 
 function SendMoney() {
   const [searchParams] = useSearchParams();
@@ -28,7 +27,7 @@ function SendMoney() {
               <div className="space-y-2   ">
                 <label
                   className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-                  for="amount"
+                  htmlFor="amount"
                 >
                   Amount (in Rs)
                 </label>

@@ -45,7 +45,7 @@ function SendMoney() {
               <button
                 onClick={() => {
                   axios.post(
-                    "http://localhost:5000/api/v1/account/transfer",
+                    "https://paytm-basic-backend-i8ru.onrender.com/api/v1/account/transfer",
                     {
                       to: id,
                       amount: amount,

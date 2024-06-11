@@ -52,7 +52,7 @@ function Signup() {
             <Button
               onClick={async () => {
                 const response = await axios.post(
-                  "http://localhost:5000/api/v1/user/signup",
+                  "https://paytm-basic-backend-i8ru.onrender.com/api/v1/user/signup",
                   {
                     username,
                     firstName,

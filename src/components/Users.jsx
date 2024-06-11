@@ -23,7 +23,12 @@ function Users() {
     const fetchUsers = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:5000/api/v1/user/bulk?filter=${filter}`
+          `https://paytm-basic-backend-i8ru.onrender.com/api/v1/user/bulk?filter=${filter}`,
+          {
+            headers: {
+              Authorization: "Bearer " + localStorage.getItem("token"),
+            },
+          }
         );
         setUsers(response.data.users);
       } catch (error) {

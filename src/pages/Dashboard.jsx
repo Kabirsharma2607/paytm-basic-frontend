@@ -23,7 +23,7 @@ function Dashboard() {
             },
           }
         );
-        console.log(res?.data?.balance);
+        //console.log(res?.data?.balance);
         setBalance(res?.data?.balance);
       };
 

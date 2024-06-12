@@ -53,7 +53,7 @@ function Signin() {
           <BottomWarning
             label={"Don't have an account?"}
             buttonText={"Sign Up"}
-            to={"/signup"}
+            to={"/"}
           />
         </div>
       </div>

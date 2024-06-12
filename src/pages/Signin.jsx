@@ -45,7 +45,7 @@ function Signin() {
                       password,
                     }
                   );
-                  console.log(response);
+                  //console.log(response);
                   if (response.data.success) {
                     message.success(response.data.message);
                     localStorage.setItem("token", response.data.token);

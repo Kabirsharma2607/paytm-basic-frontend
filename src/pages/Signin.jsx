@@ -6,6 +6,7 @@ import { Button } from "../components/Button";
 import { BottomWarning } from "../components/BottomWarning";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { message } from "antd";
 
 function Signin() {
   const [username, setUsername] = useState("");
@@ -36,16 +37,24 @@ function Signin() {
             <Button
               label={"Sign In"}
               onClick={async () => {
-                const response = await axios.post(
-                  "https://paytm-basic-backend-i8ru.onrender.com/api/v1/user/signin",
-                  {
-                    username,
-                    password,
+                try {
+                  const response = await axios.post(
+                    "https://paytm-basic-backend-i8ru.onrender.com/api/v1/user/signin",
+                    {
+                      username,
+                      password,
+                    }
+                  );
+                  console.log(response);
+                  if (response.data.success) {
+                    message.success(response.data.message);
+                    localStorage.setItem("token", response.data.token);
+                    navigate("/dashboard");
+                  } else {
+                    message.error(response.data.message);
                   }
-                );
-                if (response.data.success) {
-                  localStorage.setItem("token", response.data.token);
-                  navigate("/dashboard");
+                } catch (error) {
+                  message.error(error.message);
                 }
               }}
             />

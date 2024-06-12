@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import axios from "axios";
+import { message } from "antd";
 
 function SendMoney() {
   const [searchParams] = useSearchParams();
@@ -42,20 +43,27 @@ function SendMoney() {
                 />
               </div>
               <button
-                onClick={() => {
-                  axios.post(
-                    "https://paytm-basic-backend-i8ru.onrender.com/api/v1/account/transfer",
-                    {
-                      to: id,
-                      amount: amount,
-                    },
-                    {
-                      headers: {
-                        Authorization:
-                          "Bearer " + localStorage.getItem("token"),
+                onClick={async () => {
+                  try {
+                    const res = await axios.post(
+                      "https://paytm-basic-backend-i8ru.onrender.com/api/v1/account/transfer",
+                      {
+                        to: id,
+                        amount: amount,
                       },
+                      {
+                        headers: {
+                          Authorization:
+                            "Bearer " + localStorage.getItem("token"),
+                        },
+                      }
+                    );
+                    if (res.data.success) {
+                      message.success(res.data.message);
+                    } else {
+                      message.error(res.data.message);
                     }
-                  );
+                  } catch (error) {}
                 }}
                 className="justify-center rounded-md text-sm font-medium ring-offset-background transition-colors h-10 px-4 py-2 w-full bg-green-500 text-white"
               >

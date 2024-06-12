@@ -54,7 +54,7 @@ function Signup() {
               onClick={async () => {
                 try {
                   const response = await axios.post(
-                    "https://paytm-basic-backend-i8ru.onrender.com/api/v1/user",
+                    "https://paytm-basic-backend-i8ru.onrender.com/api/v1/user/",
                     {
                       username,
                       firstName,
